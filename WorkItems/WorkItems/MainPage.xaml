@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WorkItems"
+             xmlns:model="clr-namespace:WorkItems.Model"
+             x:Class="WorkItems.MainPage"
+             x:ClassModifier="internal"
+             BindingContext="{Binding Model, Source={RelativeSource Mode=Self}}"
+             x:DataType="{x:Type model:MainModel}">
+
+    <Grid Margin="8" RowDefinitions="Auto,*" RowSpacing="8">
+        <VerticalStackLayout Spacing="8">
+            <Label Text="{x:Static local:Strings.SearchTitle}" />
+            <Border StrokeThickness="1" Background="#18808080">
+                <Entry Placeholder="{x:Static local:Strings.SearchPlaceholder}" Text="{Binding SearchText, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" VerticalTextAlignment="Center" />
+            </Border>
+            <Label Text="{Binding ResultsTitleText}" />
+        </VerticalStackLayout>
+        <Border Grid.Row="1" StrokeThickness="1" Background="#18808080">
+            <CollectionView />
+        </Border>
+    </Grid>
+
+</ContentPage>
