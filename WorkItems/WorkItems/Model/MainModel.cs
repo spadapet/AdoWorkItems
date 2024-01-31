@@ -1,19 +1,30 @@
-﻿namespace WorkItems.Model;
+﻿using Microsoft.Maui.Controls;
+using System.Windows.Input;
 
-internal class MainModel : PropertyNotifier
+namespace WorkItems.Model;
+
+public sealed class MainModel(AppModel appModel) : PropertyNotifier
 {
+    public AppModel AppModel { get; } = appModel;
+
+    private string gptKey = string.Empty;
+    public string GptKey
+    {
+        get => this.gptKey;
+        set => this.SetProperty(ref this.gptKey, value);
+    }
+
     private string searchText = string.Empty;
     public string SearchText
     {
         get => this.searchText;
-        set => this.SetProperty(ref this.searchText, value ?? string.Empty);
+        set => this.SetProperty(ref this.searchText, value);
     }
 
-    public string ResultsTitleText
+    private Command searchCommand;
+    public ICommand SearchCommand => this.searchCommand ??= new Command(this.OnSearch);
+
+    private void OnSearch()
     {
-        get
-        {
-            return Strings.ResultsTitle;
-        }
     }
 }

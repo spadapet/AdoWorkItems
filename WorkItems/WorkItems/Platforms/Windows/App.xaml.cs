@@ -1,14 +1,15 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace WorkItems.WinUI;
-
-public partial class App : MauiWinUIApplication
+namespace WorkItems.WinUI
 {
-    public App()
+    public partial class App : MauiWinUIApplication
     {
-        this.InitializeComponent();
-    }
+        public App()
+        {
+            this.InitializeComponent();
+        }
 
-    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    }
 }

@@ -1,21 +1,23 @@
 ﻿using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using Xceed.Maui.Toolkit;
 
 namespace WorkItems;
 
-internal static class MauiProgram
+public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
-        MauiAppBuilder builder = MauiApp.CreateBuilder();
+        return MauiApp.CreateBuilder()
+            .UseXceedMauiToolkit()
+            .UseMauiApp<App>()
+            .ConfigureFonts(MauiProgram.ConfigureFonts)
+            .Build();
+    }
 
-        builder.UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
-
-        return builder.Build();
+    private static void ConfigureFonts(IFontCollection fonts)
+    {
+        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+        fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
     }
 }

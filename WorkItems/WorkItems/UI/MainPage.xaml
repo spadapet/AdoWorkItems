@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:wi="clr-namespace:WorkItems"
+             xmlns:convert="clr-namespace:WorkItems.Converter"
+             xmlns:model="clr-namespace:WorkItems.Model"
+             xmlns:xceed="http://schemas.xceed.com/maui/xaml/toolkit"
+             x:Class="WorkItems.UI.MainPage"
+             x:ClassModifier="internal"
+             x:DataType="{x:Type model:MainModel}"
+             BindingContext="{Binding Model, Source={RelativeSource Mode=Self}}"
+             Title="{x:Static wi:Strings.AppDisplayName}"
+             Loaded="OnLoaded">
+    <ContentPage.Resources>
+    </ContentPage.Resources>
+
+    <Grid Margin="8" RowSpacing="8" RowDefinitions="Auto,Auto,Auto,*">
+        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,*" ColumnSpacing="8">
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="VerticalOptions" Value="Center" />
+                </Style>
+            </Grid.Resources>
+            <Label Grid.Column="0" Text="Account:" />
+            <Border Grid.Column="1">
+                <Picker ItemsSource="{Binding AppModel.AdoModel.Accounts}" SelectedItem="{Binding AppModel.AdoModel.CurrentAccount}" />
+            </Border>
+            <Label Grid.Column="2" Text="Project:" />
+            <Border Grid.Column="3">
+                <Picker ItemsSource="{Binding AppModel.AdoModel.CurrentAccount.Projects}" SelectedItem="{Binding AppModel.AdoModel.CurrentAccount.CurrentProject}" />
+            </Border>
+            <Label Grid.Column="4" Text="ChatGPT Key:" />
+            <Border Grid.Column="5">
+                <Border.Stroke>
+                    <Binding Path="GptKey">
+                        <Binding.Converter>
+                            <convert:StringToObjectConverter>
+                                <convert:StringToObjectConverter.EmptyObject>
+                                    <SolidColorBrush Color="Red" />
+                                </convert:StringToObjectConverter.EmptyObject>
+                                <convert:StringToObjectConverter.NonEmptyObject>
+                                    <StaticResourceExtension Key="Gray500" />
+                                </convert:StringToObjectConverter.NonEmptyObject>
+                            </convert:StringToObjectConverter>
+                        </Binding.Converter>
+                    </Binding>
+                </Border.Stroke>
+                <Entry IsPassword="True" ClearButtonVisibility="WhileEditing" Text="{Binding GptKey}" Placeholder="{x:Static wi:Strings.GptKeyPlaceholder}" />
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="1" Background="#20808080" Stroke="{StaticResource Secondary}">
+            <Entry Grid.Row="1" ClearButtonVisibility="WhileEditing" ReturnCommand="{Binding SearchCommand}" Text="{Binding SearchText}" Placeholder="{x:Static wi:Strings.SearchPlaceholder}" />
+        </Border>
+        <Label Grid.Row="2" Text="{x:Static wi:Strings.ResultsIntro}" />
+        <Border Grid.Row="3" Background="#20808080" Stroke="{StaticResource Secondary}">
+            <CollectionView />
+        </Border>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:WorkItems.Model"
+    x:Class="WorkItems.UI.LoginPage"
+    x:ClassModifier="internal"
+    x:DataType="{x:Type model:LoginModel}"
+    BindingContext="{Binding Model, Source={RelativeSource Mode=Self}}"
+    Loaded="OnLoaded">
+
+    <Grid>
+        <VerticalStackLayout x:Name="NormalLayout" IsVisible="{Binding HasError, Converter={StaticResource InverseBoolConverter}}" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+            <ActivityIndicator HeightRequest="100" WidthRequest="100" IsRunning="True" />
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Logging in " />
+                        <Span Text="{Binding AppModel.AdoModel.Connection.UserName, FallbackValue='...', TargetNullValue='...'}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button Text="Cancel" HorizontalOptions="Center" Clicked="OnCancelClicked" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout x:Name="FailureLayout" IsVisible="{Binding HasError}" HorizontalOptions="Center" VerticalOptions="Center" Spacing="4">
+            <Label Text="Error:" />
+            <Border>
+                <ScrollView WidthRequest="300" HeightRequest="200" Margin="4">
+                    <Label Text="{Binding ErrorMessage}" />
+                </ScrollView>
+            </Border>
+            <Button Text="Retry" HorizontalOptions="Center" Margin="0,16,0,0" Clicked="OnRetryClicked" />
+        </VerticalStackLayout>
+
+        <!-- Visual states don't work, the change gets undone immediately -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Failure">
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding HasError}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+
+</ContentPage>

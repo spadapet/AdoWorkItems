@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using PropertyChangingEventArgs = System.ComponentModel.PropertyChangingEventArgs;
-using PropertyChangingEventHandler = System.ComponentModel.PropertyChangingEventHandler;
 
 namespace WorkItems.Model;
 

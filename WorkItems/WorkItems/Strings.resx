@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResultsTitle" xml:space="preserve">
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Work Item Search</value>
+  </data>
+  <data name="AppInternalName" xml:space="preserve">
+    <value>WorkItems</value>
+  </data>
+  <data name="DefaultAccountName" xml:space="preserve">
+    <value>devdiv</value>
+  </data>
+  <data name="DefaultProjectName" xml:space="preserve">
+    <value>DevDiv</value>
+  </data>
+  <data name="GptKeyPlaceholder" xml:space="preserve">
+    <value>Paste ChatGPT key</value>
+  </data>
+  <data name="ResultsIntro" xml:space="preserve">
     <value>Results</value>
   </data>
   <data name="SearchPlaceholder" xml:space="preserve">
     <value>Type to search</value>
-  </data>
-  <data name="SearchTitle" xml:space="preserve">
-    <value>Search</value>
   </data>
 </root>

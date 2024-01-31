@@ -61,11 +61,56 @@ namespace WorkItems {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Work Item Search.
+        /// </summary>
+        internal static string AppDisplayName {
+            get {
+                return ResourceManager.GetString("AppDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WorkItems.
+        /// </summary>
+        internal static string AppInternalName {
+            get {
+                return ResourceManager.GetString("AppInternalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to devdiv.
+        /// </summary>
+        internal static string DefaultAccountName {
+            get {
+                return ResourceManager.GetString("DefaultAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DevDiv.
+        /// </summary>
+        internal static string DefaultProjectName {
+            get {
+                return ResourceManager.GetString("DefaultProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste ChatGPT key.
+        /// </summary>
+        internal static string GptKeyPlaceholder {
+            get {
+                return ResourceManager.GetString("GptKeyPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Results.
         /// </summary>
-        internal static string ResultsTitle {
+        internal static string ResultsIntro {
             get {
-                return ResourceManager.GetString("ResultsTitle", resourceCulture);
+                return ResourceManager.GetString("ResultsIntro", resourceCulture);
             }
         }
         
@@ -75,15 +120,6 @@ namespace WorkItems {
         internal static string SearchPlaceholder {
             get {
                 return ResourceManager.GetString("SearchPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        internal static string SearchTitle {
-            get {
-                return ResourceManager.GetString("SearchTitle", resourceCulture);
             }
         }
     }
