@@ -4,7 +4,7 @@ using Xceed.Maui.Toolkit;
 
 namespace WorkItems;
 
-public static class MauiProgram
+internal static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {

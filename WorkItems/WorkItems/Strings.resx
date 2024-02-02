@@ -117,11 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountLabel" xml:space="preserve">
+    <value>Account:</value>
+  </data>
+  <data name="ApiKeyLabel" xml:space="preserve">
+    <value>API Key:</value>
+  </data>
+  <data name="ApiKeyPlaceholder" xml:space="preserve">
+    <value>Paste API key</value>
+  </data>
   <data name="AppDisplayName" xml:space="preserve">
     <value>Work Item Search</value>
   </data>
   <data name="AppInternalName" xml:space="preserve">
     <value>WorkItems</value>
+  </data>
+  <data name="AzureDeploymentDefault" xml:space="preserve">
+    <value>gpt-35-turbo</value>
+  </data>
+  <data name="AzureDeploymentEnvironmentVariable" xml:space="preserve">
+    <value>AZURE_OPENAI_DEPLOYMENT</value>
+  </data>
+  <data name="AzureKeyEnvironmentVariable" xml:space="preserve">
+    <value>AZURE_OPENAI_API_KEY</value>
+  </data>
+  <data name="AzureKeyKnownPlaceholder" xml:space="preserve">
+    <value>Using AZURE_OPENAI_API_KEY and AZURE_OPENAI_ENDPOINT environment variables</value>
+  </data>
+  <data name="AzureUrlEnvironmentVariable" xml:space="preserve">
+    <value>AZURE_OPENAI_ENDPOINT</value>
+  </data>
+  <data name="ChatGptUrl" xml:space="preserve">
+    <value>https://api.openai.com/v1/chat/completions</value>
   </data>
   <data name="DefaultAccountName" xml:space="preserve">
     <value>devdiv</value>
@@ -129,13 +156,37 @@
   <data name="DefaultProjectName" xml:space="preserve">
     <value>DevDiv</value>
   </data>
-  <data name="GptKeyPlaceholder" xml:space="preserve">
-    <value>Paste ChatGPT key</value>
+  <data name="GenericLoading" xml:space="preserve">
+    <value>Loading</value>
   </data>
-  <data name="ResultsIntro" xml:space="preserve">
-    <value>Results</value>
+  <data name="OpenAiKeyEnvironmentVariable" xml:space="preserve">
+    <value>OPENAI_API_KEY</value>
+  </data>
+  <data name="OpenAiKeyKnownPlaceholder" xml:space="preserve">
+    <value>Using OPENAI_API_KEY environment variable</value>
+  </data>
+  <data name="ProjectLabel" xml:space="preserve">
+    <value>Project:</value>
+  </data>
+  <data name="QueryLabel" xml:space="preserve">
+    <value>Query:</value>
+  </data>
+  <data name="ResultsLabel" xml:space="preserve">
+    <value>Results:</value>
+  </data>
+  <data name="SearchLabel" xml:space="preserve">
+    <value>Search:</value>
   </data>
   <data name="SearchPlaceholder" xml:space="preserve">
-    <value>Type to search</value>
+    <value>Type what you're looking for, ENTER to search</value>
+  </data>
+  <data name="SystemContent" xml:space="preserve">
+    <value>You are helping a developer that uses Azure DevOps for work item tracking. Your job is to convert a user's plain text search query into Azure DevOps Work Item Query Language, WIQL. Return the WIQL results as a plain text string. Do not return anything else and don't use any other format like JSON.</value>
+  </data>
+  <data name="SystemContent1" xml:space="preserve">
+    <value>You are helping a developer that uses Azure DevOps for work item tracking. Your job is to convert a user's plain text search query into Azure DevOps Work Item Query Language, WIQL. Return the WIQL results in JSON format where the WIQL is specified as WIQL_STRING like this: { "query": "WIQL_STRING" }</value>
+  </data>
+  <data name="UserContent" xml:space="preserve">
+    <value>The user's search query is: {0}</value>
   </data>
 </root>

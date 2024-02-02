@@ -1,6 +1,6 @@
 ﻿namespace WorkItems.Model;
 
-public interface ICopyFrom<T>
+internal interface ICopyFrom<T>
 {
     void CopyFrom(T other);
 }

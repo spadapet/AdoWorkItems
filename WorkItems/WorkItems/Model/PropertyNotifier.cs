@@ -7,7 +7,7 @@ namespace WorkItems.Model;
 /// <summary>
 /// Base class for any view model
 /// </summary>
-public abstract class PropertyNotifier : INotifyPropertyChanging, INotifyPropertyChanged
+internal abstract class PropertyNotifier : INotifyPropertyChanging, INotifyPropertyChanged
 {
     private event PropertyChangingEventHandler propertyChanging;
     private event PropertyChangedEventHandler propertyChanged;
@@ -32,7 +32,7 @@ public abstract class PropertyNotifier : INotifyPropertyChanging, INotifyPropert
         this.propertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 
-    protected bool SetProperty<T>(ref T property, T value, [CallerMemberName] string name = null)
+    protected bool SetProperty<T>(ref T property, T value, [CallerMemberName] string name = null, IEnumerable<string> otherNames = null)
     {
         if (EqualityComparer<T>.Default.Equals(property, value))
         {
@@ -44,11 +44,27 @@ public abstract class PropertyNotifier : INotifyPropertyChanging, INotifyPropert
             this.OnPropertyChanging(name);
         }
 
+        if (otherNames != null)
+        {
+            foreach (string otherName in otherNames)
+            {
+                this.OnPropertyChanging(otherName);
+            }
+        }
+
         property = value;
 
         if (name != null)
         {
             this.OnPropertyChanged(name);
+        }
+
+        if (otherNames != null)
+        {
+            foreach (string otherName in otherNames)
+            {
+                this.OnPropertyChanged(otherName);
+            }
         }
 
         return true;

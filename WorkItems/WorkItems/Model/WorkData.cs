@@ -6,7 +6,7 @@ namespace WorkItems.Model;
 /// <summary>
 /// Represents some ongoing work
 /// </summary>
-public sealed class WorkData : PropertyNotifier
+internal sealed class WorkData : PropertyNotifier
 {
     private readonly Action cancelAction;
 

@@ -4,7 +4,8 @@
              xmlns:convert="clr-namespace:WorkItems.Converter"
              xmlns:local="clr-namespace:WorkItems"
              x:Class="WorkItems.App"
-             x:ClassModifier="internal">
+             x:ClassModifier="internal"
+             UserAppTheme="Light">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

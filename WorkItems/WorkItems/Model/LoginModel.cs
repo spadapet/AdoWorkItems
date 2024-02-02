@@ -3,7 +3,7 @@ using WorkItems.Utility;
 
 namespace WorkItems.Model;
 
-public sealed class LoginModel : PropertyNotifier
+internal sealed class LoginModel : PropertyNotifier
 {
     public AppModel AppModel { get; }
     public bool HasError => !string.IsNullOrEmpty(this.errorMessage);

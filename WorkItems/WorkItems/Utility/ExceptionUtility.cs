@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace WorkItems.Utility;
 
-public static class ExceptionUtility
+internal static class ExceptionUtility
 {
     public static string FlattenMessages(this Exception exception) => string.Join(" --> ", exception.Flatten().Select(e => e.Message));
 

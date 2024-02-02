@@ -1,5 +1,4 @@
-﻿using Microsoft.TeamFoundation.Build.WebApi;
-using Microsoft.TeamFoundation.Core.WebApi;
+﻿using Microsoft.TeamFoundation.Core.WebApi;
 using Microsoft.VisualStudio.Services.Account;
 using Microsoft.VisualStudio.Services.Account.Client;
 using Microsoft.VisualStudio.Services.OAuth;
@@ -13,7 +12,7 @@ using WorkItems.Model;
 
 namespace WorkItems.Utility;
 
-public static class AdoUtility
+internal static class AdoUtility
 {
     public static async Task<AdoAccount> UpdateAccountsAsync(this AdoModel model, string forcedCurrentAccount, CancellationToken cancellationToken)
     {

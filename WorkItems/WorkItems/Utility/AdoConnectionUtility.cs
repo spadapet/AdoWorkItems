@@ -8,7 +8,7 @@ using WorkItems.Model;
 
 namespace WorkItems.Utility;
 
-public static class AdoConnectionUtility
+internal static class AdoConnectionUtility
 {
     // Cross platform Token Cache:
     // https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache

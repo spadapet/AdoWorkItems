@@ -10,7 +10,7 @@ namespace WorkItems.UI;
 internal partial class LoginPage : ContentPage, IUpdatable
 {
     public LoginModel Model { get; }
-    private CancellationTokenSource cancellationTokenSource;
+    private Wrapper<CancellationTokenSource> ctsWrapper = new(null);
 
     public LoginPage()
     {
@@ -25,29 +25,18 @@ internal partial class LoginPage : ContentPage, IUpdatable
 
     public void StartUpdate()
     {
-        if (this.cancellationTokenSource != null)
+        TaskUtility.FileOnceAndForget(this.ctsWrapper, async cts =>
         {
-            // Already updating
-            return;
-        }
-
-        TaskUtility.FileAndForget(async () =>
-        {
-            this.cancellationTokenSource = new CancellationTokenSource();
             this.Model.SetError(null);
 
             try
             {
-                await this.UpdateAsync(this.cancellationTokenSource.Token);
+                await this.UpdateAsync(cts.Token);
             }
             catch (Exception ex)
             {
                 this.Model.SetError(ex);
                 throw;
-            }
-            finally
-            {
-                this.cancellationTokenSource = null;
             }
         });
     }
@@ -62,7 +51,7 @@ internal partial class LoginPage : ContentPage, IUpdatable
 
     private void OnCancelClicked(object sender, EventArgs args)
     {
-        this.cancellationTokenSource?.Cancel();
+        this.ctsWrapper.Value?.Cancel();
     }
 
     private void OnRetryClicked(object sender, EventArgs args)

@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace WorkItems.Model;
 
 [DebuggerDisplay("{UserName,nq}")]
-public sealed class AdoConnection : IDisposable
+internal sealed class AdoConnection : IDisposable
 {
     public string UserName { get; set; }
     public string AccessToken { get; set; }

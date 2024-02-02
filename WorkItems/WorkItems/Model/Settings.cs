@@ -2,7 +2,7 @@
 
 namespace WorkItems.Model;
 
-public sealed class Settings : PropertyNotifier, ICopyFrom<Settings>, ICloneable
+internal sealed class Settings : PropertyNotifier, ICopyFrom<Settings>, ICloneable
 {
     object ICloneable.Clone()
     {

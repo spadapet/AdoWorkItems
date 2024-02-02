@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace WorkItems.Model;
 
 [DebuggerDisplay("State={State}")]
-public sealed class AppModel : PropertyNotifier, IDisposable
+internal sealed class AppModel : PropertyNotifier, IDisposable
 {
     public void Dispose()
     {

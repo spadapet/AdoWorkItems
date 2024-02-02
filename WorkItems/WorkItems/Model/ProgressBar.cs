@@ -4,13 +4,13 @@ using System.ComponentModel;
 
 namespace WorkItems.Model;
 
-public interface IProgressBar
+internal interface IProgressBar
 {
     IDisposable Begin(WorkData work);
     void Cancel();
 }
 
-public sealed class ProgressBar : PropertyNotifier, IProgressBar
+internal sealed class ProgressBar : PropertyNotifier, IProgressBar
 {
     private readonly List<TaskDataWrapper> tasks;
 

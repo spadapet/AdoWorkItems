@@ -4,21 +4,21 @@ using WorkItems.Utility;
 
 namespace WorkItems.Model;
 
-public enum InfoLevel
+internal enum InfoLevel
 {
     Message,
     Warning,
     Error,
 }
 
-public interface IInfoBar
+internal interface IInfoBar
 {
     void SetError(Exception exception, string text = null);
     void SetInfo(InfoLevel level, string text, string details = null);
     void Clear();
 }
 
-public sealed class InfoBar : PropertyNotifier, IInfoBar
+internal sealed class InfoBar : PropertyNotifier, IInfoBar
 {
     public bool HasText => !string.IsNullOrEmpty(this.text);
 

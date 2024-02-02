@@ -7,7 +7,7 @@ using System.Linq;
 namespace WorkItems.Model;
 
 [DebuggerDisplay("Account={CurrentAccount}, Connection={Connection}")]
-public sealed class AdoModel : PropertyNotifier, IDisposable
+internal sealed class AdoModel : PropertyNotifier, IDisposable
 {
     public ObservableCollection<AdoAccount> Accounts { get; } = [];
 

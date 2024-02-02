@@ -1,6 +1,6 @@
 ﻿namespace WorkItems.Model;
 
-public enum AppState
+internal enum AppState
 {
     None,
     Loading,

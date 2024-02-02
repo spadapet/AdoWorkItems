@@ -14,25 +14,20 @@
     <ContentPage.Resources>
     </ContentPage.Resources>
 
-    <Grid Margin="8" RowSpacing="8" RowDefinitions="Auto,Auto,Auto,*">
-        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,*" ColumnSpacing="8">
-            <Grid.Resources>
-                <Style TargetType="Label">
-                    <Setter Property="VerticalOptions" Value="Center" />
-                </Style>
-            </Grid.Resources>
-            <Label Grid.Column="0" Text="Account:" />
+    <Grid Margin="8" RowSpacing="8" RowDefinitions="Auto,*,Auto">
+        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="8" RowSpacing="8">
+            <Label Grid.Column="0" Text="{x:Static wi:Strings.AccountLabel}" VerticalOptions="Center" />
             <Border Grid.Column="1">
                 <Picker ItemsSource="{Binding AppModel.AdoModel.Accounts}" SelectedItem="{Binding AppModel.AdoModel.CurrentAccount}" />
             </Border>
-            <Label Grid.Column="2" Text="Project:" />
+            <Label Grid.Column="2" Text="{x:Static wi:Strings.ProjectLabel}" VerticalOptions="Center" />
             <Border Grid.Column="3">
                 <Picker ItemsSource="{Binding AppModel.AdoModel.CurrentAccount.Projects}" SelectedItem="{Binding AppModel.AdoModel.CurrentAccount.CurrentProject}" />
             </Border>
-            <Label Grid.Column="4" Text="ChatGPT Key:" />
+            <Label Grid.Column="4" Text="{x:Static wi:Strings.ApiKeyLabel}" VerticalOptions="Center" />
             <Border Grid.Column="5">
                 <Border.Stroke>
-                    <Binding Path="GptKey">
+                    <Binding Path="FinalApiKey">
                         <Binding.Converter>
                             <convert:StringToObjectConverter>
                                 <convert:StringToObjectConverter.EmptyObject>
@@ -45,17 +40,51 @@
                         </Binding.Converter>
                     </Binding>
                 </Border.Stroke>
-                <Entry IsPassword="True" ClearButtonVisibility="WhileEditing" Text="{Binding GptKey}" Placeholder="{x:Static wi:Strings.GptKeyPlaceholder}" />
+                <Entry IsPassword="True" ClearButtonVisibility="WhileEditing" Text="{Binding ApiKey}" Placeholder="{Binding KeySourcePlaceholder}" />
+            </Border>
+            <Label Grid.Row="1" Text="{x:Static wi:Strings.SearchLabel}" VerticalOptions="Center" />
+            <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Background="#10808000">
+                <Entry ClearButtonVisibility="WhileEditing" ReturnCommand="{Binding SearchCommand}" Text="{Binding SearchText}" Placeholder="{x:Static wi:Strings.SearchPlaceholder}" />
             </Border>
         </Grid>
 
-        <Border Grid.Row="1" Background="#20808080" Stroke="{StaticResource Secondary}">
-            <Entry Grid.Row="1" ClearButtonVisibility="WhileEditing" ReturnCommand="{Binding SearchCommand}" Text="{Binding SearchText}" Placeholder="{x:Static wi:Strings.SearchPlaceholder}" />
-        </Border>
-        <Label Grid.Row="2" Text="{x:Static wi:Strings.ResultsIntro}" />
-        <Border Grid.Row="3" Background="#20808080" Stroke="{StaticResource Secondary}">
-            <CollectionView />
-        </Border>
+        <Grid Grid.Row="1" RowDefinitions="Auto,2*,Auto,1*" RowSpacing="8">
+            <Label Text="{x:Static wi:Strings.ResultsLabel}" />
+            <Border Grid.Row="1" Background="#10808000">
+                <CollectionView x:Name="workItemsView" ItemsSource="{Binding WorkItems}" SelectionMode="Single" SelectionChangedCommand="{Binding WorkItemClickedCommand}" EmptyView="No items to display.">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type model:AdoWorkItem}">
+                            <HorizontalStackLayout Spacing="8" Padding="8">
+                                <Label TextColor="Black">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Id}" TextColor="Blue" />
+                                            <Span Text=" : " />
+                                            <Span Text="{Binding Title}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+            <HorizontalStackLayout Grid.Row="2" Spacing="8">
+                <Label Text="{x:Static wi:Strings.QueryLabel}" VerticalOptions="Center" />
+                <Button Text="&gt;" WidthRequest="20" HeightRequest="20" Command="{Binding RunQueryCommand}" IsVisible="{Binding HasQuery}" />
+            </HorizontalStackLayout>
+            <Border Grid.Row="3" Background="#10808000" >
+                <Editor Text="{Binding Query}" />
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label TextColor="Red" Text="{Binding AppModel.InfoBar.Text}" IsVisible="{Binding AppModel.InfoBar.HasText}" />
+                <Label TextColor="Green" Text="{Binding AppModel.ProgressBar.LoadingText}" IsVisible="{Binding AppModel.ProgressBar.IsLoading}" />
+            </VerticalStackLayout>
+            <Button Grid.Column="1" Text="X" Clicked="OnClickedCancel" IsVisible="{Binding AppModel.ProgressBar.IsLoading}" IsEnabled="{Binding AppModel.ProgressBar.IsLoading}" ToolTipProperties.Text="{Binding AppModel.ProgressBar.LoadingText}" />
+        </Grid>
     </Grid>
 
 </ContentPage>

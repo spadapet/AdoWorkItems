@@ -1,6 +1,6 @@
 ﻿namespace WorkItems.Model;
 
-public interface IUpdatable
+internal interface IUpdatable
 {
     void StartUpdate();
 }

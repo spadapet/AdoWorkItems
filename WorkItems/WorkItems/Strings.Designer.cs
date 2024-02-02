@@ -61,6 +61,33 @@ namespace WorkItems {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account:.
+        /// </summary>
+        internal static string AccountLabel {
+            get {
+                return ResourceManager.GetString("AccountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API Key:.
+        /// </summary>
+        internal static string ApiKeyLabel {
+            get {
+                return ResourceManager.GetString("ApiKeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste API key.
+        /// </summary>
+        internal static string ApiKeyPlaceholder {
+            get {
+                return ResourceManager.GetString("ApiKeyPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Work Item Search.
         /// </summary>
         internal static string AppDisplayName {
@@ -75,6 +102,60 @@ namespace WorkItems {
         internal static string AppInternalName {
             get {
                 return ResourceManager.GetString("AppInternalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to gpt-35-turbo.
+        /// </summary>
+        internal static string AzureDeploymentDefault {
+            get {
+                return ResourceManager.GetString("AzureDeploymentDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AZURE_OPENAI_DEPLOYMENT.
+        /// </summary>
+        internal static string AzureDeploymentEnvironmentVariable {
+            get {
+                return ResourceManager.GetString("AzureDeploymentEnvironmentVariable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AZURE_OPENAI_API_KEY.
+        /// </summary>
+        internal static string AzureKeyEnvironmentVariable {
+            get {
+                return ResourceManager.GetString("AzureKeyEnvironmentVariable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using AZURE_OPENAI_API_KEY and AZURE_OPENAI_ENDPOINT environment variables.
+        /// </summary>
+        internal static string AzureKeyKnownPlaceholder {
+            get {
+                return ResourceManager.GetString("AzureKeyKnownPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AZURE_OPENAI_ENDPOINT.
+        /// </summary>
+        internal static string AzureUrlEnvironmentVariable {
+            get {
+                return ResourceManager.GetString("AzureUrlEnvironmentVariable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://api.openai.com/v1/chat/completions.
+        /// </summary>
+        internal static string ChatGptUrl {
+            get {
+                return ResourceManager.GetString("ChatGptUrl", resourceCulture);
             }
         }
         
@@ -97,29 +178,101 @@ namespace WorkItems {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paste ChatGPT key.
+        ///   Looks up a localized string similar to Loading.
         /// </summary>
-        internal static string GptKeyPlaceholder {
+        internal static string GenericLoading {
             get {
-                return ResourceManager.GetString("GptKeyPlaceholder", resourceCulture);
+                return ResourceManager.GetString("GenericLoading", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Results.
+        ///   Looks up a localized string similar to OPENAI_API_KEY.
         /// </summary>
-        internal static string ResultsIntro {
+        internal static string OpenAiKeyEnvironmentVariable {
             get {
-                return ResourceManager.GetString("ResultsIntro", resourceCulture);
+                return ResourceManager.GetString("OpenAiKeyEnvironmentVariable", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type to search.
+        ///   Looks up a localized string similar to Using OPENAI_API_KEY environment variable.
+        /// </summary>
+        internal static string OpenAiKeyKnownPlaceholder {
+            get {
+                return ResourceManager.GetString("OpenAiKeyKnownPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project:.
+        /// </summary>
+        internal static string ProjectLabel {
+            get {
+                return ResourceManager.GetString("ProjectLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query:.
+        /// </summary>
+        internal static string QueryLabel {
+            get {
+                return ResourceManager.GetString("QueryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Results:.
+        /// </summary>
+        internal static string ResultsLabel {
+            get {
+                return ResourceManager.GetString("ResultsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search:.
+        /// </summary>
+        internal static string SearchLabel {
+            get {
+                return ResourceManager.GetString("SearchLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type what you&apos;re looking for, ENTER to search.
         /// </summary>
         internal static string SearchPlaceholder {
             get {
                 return ResourceManager.GetString("SearchPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are helping a developer that uses Azure DevOps for work item tracking. Your job is to convert a user&apos;s plain text search query into Azure DevOps Work Item Query Language, WIQL. Return the WIQL results as a plain text string. Do not return anything else and don&apos;t use any other format like JSON..
+        /// </summary>
+        internal static string SystemContent {
+            get {
+                return ResourceManager.GetString("SystemContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are helping a developer that uses Azure DevOps for work item tracking. Your job is to convert a user&apos;s plain text search query into Azure DevOps Work Item Query Language, WIQL. Return the WIQL results in JSON format where the WIQL is specified as WIQL_STRING like this: { &quot;query&quot;: &quot;WIQL_STRING&quot; }.
+        /// </summary>
+        internal static string SystemContent1 {
+            get {
+                return ResourceManager.GetString("SystemContent1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user&apos;s search query is: {0}.
+        /// </summary>
+        internal static string UserContent {
+            get {
+                return ResourceManager.GetString("UserContent", resourceCulture);
             }
         }
     }

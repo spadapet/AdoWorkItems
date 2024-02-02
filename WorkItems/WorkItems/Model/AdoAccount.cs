@@ -7,7 +7,7 @@ using System.Linq;
 namespace WorkItems.Model;
 
 [DebuggerDisplay("{Name,nq} {Id}")]
-public sealed class AdoAccount : PropertyNotifier, IComparable, IComparable<AdoAccount>, IEquatable<AdoAccount>
+internal sealed class AdoAccount : PropertyNotifier, IComparable, IComparable<AdoAccount>, IEquatable<AdoAccount>
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

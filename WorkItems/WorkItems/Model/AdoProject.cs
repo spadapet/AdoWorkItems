@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace WorkItems.Model;
 
 [DebuggerDisplay("{Name,nq} {Id}")]
-public sealed class AdoProject : IComparable, IComparable<AdoProject>, IEquatable<AdoProject>
+internal sealed class AdoProject : IComparable, IComparable<AdoProject>, IEquatable<AdoProject>
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
